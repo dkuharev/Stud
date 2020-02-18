@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>Test</title>
+    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.js"></script>
+<script>
+  mocha.setup('bdd');
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chai/2.0.0/chai.js"></script>
+<script>
+  var assert = chai.assert;
+</script>
+<script src="./task1.js"></script>
+<script src="./task2.js"></script>
+<script src="./task3.js"></script>
+<script src="./task4.js"></script>
+<script src="./task5.js"></script>
+
+<div id="mocha"></div>
+<script>
+  describe("getAmountOrMultiplication", function (){
+    it("передаем a = 2, b = 7", function() {
+      assert.equal(getAmountOrMultiplication(2,7), 14);
+    });
+
+    it("передаем a = 3, b = 7", function() {
+      assert.equal(getAmountOrMultiplication(3,7), 10);
+    });
+  });
+
+
+
+  describe("getQuarter", function (){
+    it("передаем a = 2, b = 7", function() {
+      assert.equal(getQuarter(2,7), 1);
+    });
+    
+    it("передаем a = -2, b = 3", function() {
+      assert.equal(getQuarter(-2,3), 2);
+    });
+  })
+  
+
+
+  describe("getSum", function () {
+    it("передаем a = 2, b = -7, c = 5", function() {
+      assert.equal(getSum(2,-7,5), 7);
+    });
+    it("передаем a = 2, b = 7, c = 5", function() {
+      assert.equal(getSum(2,7,5), 14);
+    });
+  });
+
+
+
+  describe("getResult", function (){
+    it("передаем a = 2, b = 7, c = 4", function() {
+      assert.equal(getResult(2,7,4), 59);
+    });
+    it("передаем a = 1, b = 2, c = 2", function() {
+      assert.equal(getResult(1,2,2), 8);
+    });
+  });
+
+
+
+  describe("getMark", function (){
+    it("передаем a = 2", function() {
+      assert.equal(getMark(2), F);
+    });
+    it("передаем a = 43", function() {
+      assert.equal(getMark(43), D);
+    });
+  });
+
+  </script>
+
+
+<script>
+  mocha.run();
+</script>
+  </body>
