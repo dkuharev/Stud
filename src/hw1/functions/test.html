@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>Test</title>
+    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.js"></script>
+<script>
+  mocha.setup('bdd');
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chai/2.0.0/chai.js"></script>
+<script>
+  var assert = chai.assert;
+</script>
+<script src="./task1.js"></script>
+<script src="./task2.js"></script>
+<script src="./task4.js"></script>
+
+<div id="mocha"></div>
+<script>
+  describe("day", function (){
+    it("передаем a = 2", function() {
+      assert.equal(day(2), );
+    });
+
+    it("передаем a = 3", function() {
+      assert.equal(day(3), );
+    });
+  });
+
+
+
+  describe("task4",function(){
+    it("(2,1)(5,5) => 5",function(){
+        assert.equal(pifagor(katet(2,5),katet(1,5)),5)
+    })
+    it("(0,0)(6,8) => 10",function(){
+        assert.equal(pifagor(katet(6,0),katet(8,0)),10)
+    })
+    it("(-1,0)(0,0) => 1",function(){
+        assert.equal(pifagor(katet(-1,0),katet(0,0)),1)
+    })
+})
+  </script>
+
+
+<script>
+  mocha.run();
+</script>
+  </body>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>Test</title>
+    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.js"></script>
+<script>
+  mocha.setup('bdd');
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chai/2.0.0/chai.js"></script>
+<script>
+  var assert = chai.assert;
+</script>
+<script src="./script.js"></script>
+
+<div id="mocha"></div>
+<script>
+  describe("plus", function (){
+    it("передаем a = 2, b = 7", function() {
+      assert.equal(plus(2,7), 9);
+    });
+
+    it("передаем a = 10, b = 7", function() {
+      assert.equal(plus(10,7), 17);
+    });
+  });
+
+
+  describe("minus", function (){
+    it("передаем a = 7, b = 2", function() {
+      assert.equal(minus(7,2), 5);
+    });
+
+    it("передаем a = 10, b = 7", function() {
+      assert.equal(minus(10,7), 3);
+    });
+  });
+
+
+  describe("multiply", function (){
+    it("передаем a = 2, b = 7", function() {
+      assert.equal(multiply(2,7), 14);
+    });
+
+    it("передаем a = 10, b = 7", function() {
+      assert.equal(multiply(10,7), 70);
+    });
+  });
+
+
+  describe("split", function (){
+    it("передаем a = 6, b = 2", function() {
+      assert.equal(split(6,2), 3);
+    });
+
+    it("передаем a = 10, b = 5", function() {
+      assert.equal(split(10,5), 2);
+    });
+  });
+
+
+  </script>
+
+
+<script>
+  mocha.run();
+</script>
+  </body>

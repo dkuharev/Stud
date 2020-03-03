@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>Test</title>
+    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.js"></script>
+<script>
+  mocha.setup('bdd');
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chai/2.0.0/chai.js"></script>
+<script>
+  var assert = chai.assert;
+</script>
+<script src="./task1.js"></script>
+<script src="./task2.js"></script>
+<script src="./task3.js"></script>
+<script src="./task4.js"></script>
+<script src="./task5.js"></script>
+<script src="./task6.js"></script>
+
+<div id="mocha"></div>
+<script>
+  describe("task1",function(){
+    it("ожидаем 2450, 49",function(){
+        assert.deepEqual(sumChet(),[2450,49])
+    })
+})
+
+
+
+  describe("task2",function(){
+    it("передаем 19, ожидаем true",function(){
+        assert.equal(simple(19),true)
+    })
+    it("передаем 1, ожидаем false",function(){
+        assert.equal(simple(1),false)
+    })
+})
+
+
+describe("task3",function(){
+    describe("Метод последовательного подбора",function(){
+        it("передаем 120, ожидаем 10",function(){
+            assert.equal(podbor(120),10)
+        })
+        it("передаем 121, ожидаем 10",function(){
+            assert.equal(podbor(121),11)
+        })
+    })
+    })
+
+
+describe("task4",function(){
+    it("передаем 5, ожидаем 120", function(){
+        assert.equal(fact(5),120)
+    })
+    it("передаем 10, ожидаем 3628800", function(){
+        assert.equal(fact(10),3628800)
+    })
+})
+
+
+describe("task5",function(){
+    it("передаем 123, ожидаем 6", function(){
+        assert.equal(sumNum(123),6)
+    })
+    it("передаем 102030, ожидаем 6", function(){
+        assert.equal(sumNum(102030),6)
+    })
+})
+
+
+describe("task6",function(){
+    it("передаем 123, ожидаем 321",function(){
+        assert.equal(reverse(123),321)
+    })
+    it("передаем 102030, ожидаем 30201",function(){
+        assert.equal(reverse(102030),30201)
+    })
+})
+
+  </script>
+
+
+<script>
+  mocha.run();
+</script>
+  </body>

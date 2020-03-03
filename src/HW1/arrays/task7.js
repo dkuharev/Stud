@@ -1,9 +1,9 @@
-let arr4 = [13, 20, 33, 44, 50, 11, 55];
-let test = [];
-for (let i = 0; i <= arr4.length - 1; i++) {
-  if (arr4[i] % 2 === 1) {
-    test.push(arr4[i]);
-  }
+'use strict'
+function kolNotChet(arr){
+let amount=0
+for(let i=0;i<arr.length;i++)
+{
+    if(arr[i]%2!=0)amount++;//количество нечетных элементов 
 }
-console.log(test);
-console.log(test.length);
+return amount
+}

@@ -1,192 +1,120 @@
-var lastNumber  = null;
-var currentNumber = null;
-var operator = null;
-var results = null;
-var decimalSet = false;
-var fromEquals = false;
+// "use string"
 
-function displayOutput(myNewValue){
-  document.getElementsByClassName("output")[0].setAttribute("value", myNewValue);
+let displayOut = "";
+let val1 = "";
+let isOperClicked = false;
+let operator = "";
+let val2 = "";
+
+const tap = document.querySelectorAll(".numb");
+const operators = document.querySelectorAll('.operator');
+const equal = document.getElementById('equal');
+const display = document.getElementById("disp");
+const clearBtn = document.getElementById('ac');
+
+
+function isOperClick(event) {
+    operator = event.target.value;
+    isOperClicked = !!operator;
+    console.log(operator);
 }
 
-function doMath(xin, yin, operator){
-  switch (operator) {
-        case "divide":
-            return xin / yin;
-            break;
-        case "multiply":
-            return xin * yin;
-            break;
-        case "add":
-            return +xin + +yin;
-            break;
-        case "subtract":
-            return xin - yin;
-            break;
-  }
+equal.addEventListener("click", getEqual);
+function getEqual(){
+    // if (val1 != '' && val2 == ''){
+    //     switchOper();
+    // }
+    val2 = +displayOut;
+    display.value = getResult(operator);
 }
 
-//bug fix: When user clicked an operator after clicking equals, the old currentNumber
-//was combined with the old operator. Output was unexpected, and unrelated to the new operator
-function ifFromEquals() {
-
-  if(fromEquals){
-    console.log("Function ifFromEquals(), if statement passed");
-    currentNumber = results;
-    lastNumber = null;
-    operator = null;
-    results = null;
-    decimalSet  = null;
-    fromEquals = false;
-    displayOutput(currentNumber);
-  }
+function getNum(event) {
+    if (!displayOut.includes('.')) {
+        displayOut += event.target.value;
+        display.value = displayOut;    
+    }
 }
 
-function calculatorLogic(xin){
-  console.log("logic called");
-  if(lastNumber != null && currentNumber != null && operator != null){
-    //if all values have been set
-    //example: 3 x 3 / ....
-    results = doMath(lastNumber, currentNumber, operator);
-    operator = xin;
-    lastNumber = results;
-    currentNumber = null;
-    displayOutput(results);
-  } else
-  if(lastNumber == null && currentNumber != null && operator == null){
-      //if only the currentNumber is set, assume equation still being built
-      //example: 3 / ....
-      operator = xin;
-      lastNumber = currentNumber;
-      currentNumber = null;
-      displayOutput(lastNumber);
-  } else
-  if(lastNumber == null && currentNumber == null && operator == null){
-    //If no values have been set, assume user error
-    //example / ....
-    displayOutput("0");
-  } else {
-    console.log("Unexpected error occured: check switch logic at buttonClick().multiply");
-  }
+function getOperator(event) {
+    
+    if (displayOut.indexOf('.') == displayOut.length - 1){
+        displayOut = displayOut.substring(0, displayOut.length - 1);
+    }
+    if (val1 == '') {
+        val1 = +displayOut;
+        console.log(+val1);
+    }
+    else if (val2 == '' && isOperClicked) {
+        val2 = +displayOut;
+        console.log(+val2);
+        displayOut = getResult(event);
+    }
+    operator = event.target.value;
+    isOperClicked = true;
+    displayOut = "";
 }
 
-function buttonClick(xin) {
-  let myValue = xin.getAttribute("value");
 
-  //if operator has been set....
-  switch (myValue){
-        case "all-clear":
-            //button changes between AC and C, and value for button changes between all-clear and clear
-            //Once a character is entered, AC changes to C. If C is clicked, clear is called on switch and
-            //changes value to all-clear.
-            //if AC clicked again, all-clear is called on switch, and lastNumber and operator are reset
-            currentNumber = null;
-            lastNumber = null;
-            operator = null;
-            results = null;
-            decimalSet = false;
-            fromEquals = false;
-            //document.getElementsByClassName("clear")[0].innerHTML = "AC";
-            displayOutput("0");
+for(let i = 0; i < tap.length; i++) {
+    tap[i].addEventListener("click", getNum);
+};
+for(let i = 0; i < operators.length; i++) {
+    operators[i].addEventListener("click", getOperator);
+};
+
+
+function plus(val1, val2) {
+    return val1 + val2;
+};
+
+function minus(val1, val2) {
+    return val1 - val2;
+};
+
+function multiply(val1, val2) {
+    return val1 * val2;
+};
+
+function split(val1, val2) {
+    return val1 / val2;
+}
+
+
+const clear = function() {        
+    screen.value = '0';
+    val1 = '';
+    val2 = '';
+    isOperClicked = false;
+    operator = '';
+    operatorInMemory = '';
+    displayOut = '';
+    document.getElementById("disp").value = '';
+};
+clearBtn.addEventListener('click', clear);
+
+
+function getResult(operation) {
+    val1 = +val1;
+    val2 = +val2;
+    let result;
+    switch (operation) {
+        case '+': {
+            result = plus(val1, val2);
             break;
-
-        case "clear":
-            //button changes between AC and C, and value for button changes between all-clear and clear
-            //Once a character is entered, AC changes to C. If C is clicked, clear is called on switch and
-            //changes value to all-clear.
-            //if AC clicked again, all-clear is called on switch, and lastNumber and operator are reset
-            currentNumber = null;
-            results = null;
-            decimalSet = false;
-            fromEquals = false;
-            document.getElementsByClassName("clear")[0].innerHTML = "AC";
-            document.getElementsByClassName("clear")[0].setAttribute("value", "all-clear");
-            displayOutput("0");
+        }
+        case "-": {
+            result = minus(val1, val2);
             break;
-
-        case "percent":
-            //results take priority over currentNumber, since currentNumber is not always the last outputed number
-            if(results != null){
-              displayOutput(results /= 100);
-            } else
-            if(currentNumber != null){
-              displayOutput(currentNumber /= 100);
-            }
+        }
+        case "x": {
+            result = multiply(val1, val2);
             break;
-
-        case "opposite":
-            //results take priority over currentNumber, since currentNumber is not always the last outputed number
-            if(results != null){
-              displayOutput(results *= -1);
-            } else
-            if(currentNumber != null){
-              displayOutput(currentNumber *= -1);
-            }
+        }
+        case "/": {
+            result = split(val1, val2);
             break;
-
-        case "divide":
-            console.log("Divide found on switch");
-            ifFromEquals();
-            calculatorLogic(myValue);
-            break;
-
-        case "multiply":
-            console.log("multiply found on switch");
-            ifFromEquals();
-            calculatorLogic(myValue);
-            break;
-
-        case "subtract":
-            console.log("Subtract found on switch");
-            ifFromEquals();
-            calculatorLogic(myValue);
-            break;
-
-        case "add":
-            console.log("Add found on switch");
-            ifFromEquals();
-            calculatorLogic(myValue);
-            break;
-
-        case "period":
-            document.getElementsByClassName("clear")[0].innerHTML = "C";
-            if(decimalSet == false){
-                (currentNumber == null) ? currentNumber = 0 + "." : currentNumber += ".";
-                decimalSet = true;
-            } else {
-              console.log("Number is already a decimal");
-            }
-            displayOutput(currentNumber);
-            break;
-
-        case "equals":
-            console.log("logic called");
-            if(lastNumber != null && currentNumber != null && operator != null){
-              //if all values have been set
-              //example: 3 x 3 ....
-              results = doMath(lastNumber, currentNumber, operator);
-              //operator and currentNumber are NOT reset
-              //user can hit EQUALS multiple times to perform same math with
-              //updated results
-              lastNumber = results;
-              displayOutput(results);
-              fromEquals = true;
-            } else {
-              console.log("Unexpected error occured: check switch logic at buttonClick().multiply");
-            }
-            break;
-
-        default:
-            //button changes between AC and C, and value for button changes between all-clear and clear
-            //Once a character is entered, AC changes to C. If C is clicked, clear is called on switch and
-            //changes value to all-clear.
-            //if AC clicked again, all-clear is called on switch, and lastNumber and operator are reset
-            document.getElementsByClassName("clear")[0].innerHTML = "C";
-            document.getElementsByClassName("clear")[0].setAttribute("value", "clear");
-            (currentNumber == null) ? currentNumber = myValue : currentNumber += myValue;
-            displayOutput(currentNumber);
-            break;
-
-
-  } //end switch
-} //end function
+        }
+    }
+    return result;
+    // document.getElementById("disp").value = result;
+}

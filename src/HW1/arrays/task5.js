@@ -1,8 +1,10 @@
-let arr3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-let result = 0;
-for (let value of arr3) {
-  if (arr3[value] % 2 === 1) {
-    result += arr3[value];
-  }
+'use strict'
+
+function sumNotChet(arr){
+    let sum=0
+    for(let i=0;i<arr.length;i++)
+    {
+        if(i%2!=0)sum+=arr[i];// сумма элементов с нечетными индексами
+    }
+    return sum;
 }
-console.log(result);

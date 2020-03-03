@@ -1,0 +1,125 @@
+<html>
+<head>
+  <!-- подключаем стили Mocha, для отображения результатов -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.css">
+
+  <!-- подключаем библиотеку Mocha -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.js"></script>
+
+  <!-- настраиваем Mocha: предстоит BDD-тестирование -->
+  <script>
+    mocha.setup('bdd');
+  </script>
+
+  <!-- подключаем chai -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/2.0.0/chai.js"></script>
+  <!-- в chai есть много всего, выносим assert в глобальную область -->
+  <script>
+    var assert = chai.assert;
+  </script>
+
+  <script src="./task1.js"></script>
+  <script src="task2.js"></script>
+  <script src="./task3.js"></script>
+  <script src="./task4.js"></script>
+  <script src="./task5.js"></script>
+  <script src="./task6.js"></script>
+  <script src="./task7.js"></script>
+  <script src="./task8.js"></script>
+  <script src="./task9_bubble.js"></script>
+  <script src="./task9_select.js"></script>
+  <script src="./task9_insert.js"></script>
+  <!-- в элементе с id="mocha" будут результаты тестов -->
+
+</head>
+
+<body>
+  <div id="mocha"></div>
+
+  <script>
+
+describe("task1",function(){
+    it("[4,7,9,7,3,5,9,4]=>3",function(){
+        assert.equal(minArr([4,7,9,7,3,5,9,4]),3)
+    })
+    it("[-4,7,-9,7,3,5,0,4]=>-9",function(){
+        assert.equal(minArr([-4,7,-9,7,3,5,0,4]),-9)
+    })
+})
+
+
+describe("task2",function(){
+    it("[4,7,9,7,3,5,9,4]=>9",function(){
+        assert.equal(maxArr([4,7,9,7,3,5,9,4]),9)
+    })
+    it("[-4,7,-9,17,3,5,0,4]=>17",function(){
+        assert.equal(maxArr([-4,7,-9,17,3,5,0,4]),17)
+    })
+})
+
+
+describe("task3",function(){
+    it("[4,7,9,7,3,5,9,4]=>4",function(){
+        assert.equal(minInd([4,7,9,7,3,5,9,4]),4)
+    })
+    it("[-4,7,-9,7,3,5,0,4]=>2",function(){
+        assert.equal(minInd([-4,7,-9,7,3,5,0,4]),2)
+    })
+})
+
+
+describe("task4",function(){
+    it("[4,7,9,7,3,5,9,4]=>2",function(){
+        assert.equal(maxInd([4,7,9,7,3,5,9,4]),2)
+    })
+    it("[-4,7,-9,7,3,5,0,4]=>1",function(){
+        assert.equal(maxInd([-4,7,-9,7,3,5,0,4]),1)
+    })
+})
+
+
+describe("task5",function(){
+    it("[4,7,9,7,3,5,9,4]=>23",function(){
+        assert.equal(sumNotChet([4,7,9,7,3,5,9,4]),23)
+    })
+    it("[-4,-7,-9,7,3,5,0,14]=>19",function(){
+        assert.equal(sumNotChet([-4,-7,-9,7,3,5,0,14]),19)
+    })
+})
+
+
+describe("task6",function(){
+    it("[1,3,5,1]=>[1,5,3,1]",function(){
+        assert.deepEqual(reverse([1,3,5,1]),[1,5,3,1])
+    })
+    it("[12,45,78]=>[78,45,12]",function(){
+        assert.deepEqual(reverse([12,45,78]),[78,45,12])
+    })
+})
+
+
+describe("task7",function(){
+    it("[1,3,5,1]=>4",function(){
+        assert.equal(kolNotChet([1,3,5,1]),4)
+    })
+    it("[12,45,78]=>1",function(){
+        assert.equal(kolNotChet([12,45,78]),1)
+    })
+})
+
+
+describe("task8",function(){
+    it("[1,3,5,1]=>[5,1,1,3]",function(){
+        assert.deepEqual(halfRev([1,3,5,1]),[5,1,1,3])
+    })
+    it("[12,45,78]=>[78,45,12]",function(){
+        assert.deepEqual(halfRev([12,45,78]),[78,45,12])
+    })
+})
+  </script>
+
+  <script>
+    mocha.run();
+  </script>
+</body>
+</html>
