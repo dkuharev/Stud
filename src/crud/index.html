@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root">
+        <div class="inputs">
+            <input type="text" value="ID">
+            <input type="text" value="First Name">
+            <input type="text" value="Last Name">
+            <input type="text" value="Age">
+        </div>
+        <div class="buttons">
+            <input type="button" value="Create">
+            <input type="button" value="Read">
+            <input type="button" value="Update">
+            <input type="button" value="Delete">
+        </div>
+        <div class="list">
+
+        </div>
+    </div>
+
+    <script>
+        // function createTag(name, count) {
+        //     var arr = new Array(count).fill(null);
+        // }
+
+        var list = document.getElementsByClassName('list')
+
+        var div = document.createElement("div");
+        var div1 = document.createElement("div");
+        div1.innerHTML = 'TEST'
+        var div2 = document.createElement("div");
+        div2.innerHTML = 'TEST'
+        var div3 = document.createElement("div");
+        div3.innerHTML = 'TEST'
+        var div4 = document.createElement("div");
+        div4.innerHTML = 'TEST'
+
+        div.append(div1);
+        div.append(div2);
+        div.append(div3);
+        div.append(div4);
+        
+        list[0].append(div);
+    </script>
+</body>
+</html>

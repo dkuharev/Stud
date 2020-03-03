@@ -1,10 +1,10 @@
-let arr2 = [10, 20, 30, 40, 50];
-console.log(Math.max(...arr2)); // простое решение
-let maxValueInArr = 0;
-
-for (let i = 0; i < arr2.length; i++) {
-  if (arr2[i] === Math.max(...arr2)) {
-    maxValueInArr += arr2[i];
-  }
+'use strict'
+function maxArr(arr){
+let max=arr[0];
+for(let i=0;i<arr.length;i++)
+{
+    if(arr[i]>max)//поиск максимального элемента
+        max=arr[i];
 }
-console.log(maxValueInArr);
+return max;
+}

@@ -1,65 +1,47 @@
 <!DOCTYPE html>
-<html lang="en-US">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Calculator</title>
-    <script src="script.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="style.css">
-
-    <!-- Font Link -->
-    <link href="https://fonts.googleapis.com/css?family=Tajawal" rel="stylesheet">
-
-    <!-- font awesome icon pack -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
-    integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
-    crossorigin="anonymous">
-
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calc</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-  <header>
-    <h1>Calculator</h1>
-  </header>
-  <main>
+    
+    <div class="calculator">
 
-    <input type="text" class="output" id="test" value="0" />
+      <input type="text" value="" class="display" id="disp">
 
-    <div class="myRow">
-      <button class="btn flex clear" value="all-clear" onclick="buttonClick(this)">AC</button>
-      <button class="btn flex" value="opposite" onclick="buttonClick(this)">+/-</button>
-      <button class="btn flex" value="percent" onclick="buttonClick(this)"><i class="fas fa-percentage"></i></button>
-      <button class="btn flex secondary" value="divide" onclick="buttonClick(this)"><i class="fas fa-divide"></i></button>
+      <div class="row">
+        <input type="button" class="btn color" value="AC" id="ac">
+        <!-- <input type="button" class="btn color" value="+/-"> -->
+        <!-- <input type="button" class="btn color" value="%"> -->
+        <input type="button" class="btn orange operator" value="/">
+      </div>
+      <div class="row">
+        <input type="button" class="btn numb" value="7">
+        <input type="button" class="btn numb" value="8">
+        <input type="button" class="btn numb" value="9">
+        <input type="button" class="btn orange operator" value="x">
+      </div>
+      <div class="row">
+        <input type="button" class="btn numb" value="4">
+        <input type="button" class="btn numb" value="5">
+        <input type="button" class="btn numb" value="6">
+        <input type="button" class="btn orange operator" value="-">
+      </div>
+      <div class="row">
+        <input type="button" class="btn numb" value="1">
+        <input type="button" class="btn numb" value="2">
+        <input type="button" class="btn numb" value="3">
+        <input type="button" class="btn orange operator" value="+">
+      </div>
+      <div class="row">
+        <input type="button" class="btn numb zero" value="0">
+        <input type="button" class="btn numb point" value=".">
+        <input type="button" class="btn orange" id="equal" value="=">
+      </div>
     </div>
-    <div class="myRow">
-      <button class="btn flex" value="7" onclick="buttonClick(this)">7</button>
-      <button class="btn flex" value="8" onclick="buttonClick(this)">8</button>
-      <button class="btn flex" value="9" onclick="buttonClick(this)">9</button>
-      <button class="btn flex secondary" value="multiply" onclick="buttonClick(this)"><i class="fas fa-times"></i></button>
-    </div>
-    <div class="myRow">
-      <button class="btn flex" value="4" onclick="buttonClick(this)">4</button>
-      <button class="btn flex" value="5" onclick="buttonClick(this)">5</button>
-      <button class="btn flex" value="6" onclick="buttonClick(this)">6</button>
-      <button class="btn flex secondary" value="subtract" onclick="buttonClick(this)"><i class="fas fa-minus"></i></button>
-    </div>
-    <div class="myRow">
-      <button class="btn flex" value="1" onclick="buttonClick(this)">1</button>
-      <button class="btn flex" value="2" onclick="buttonClick(this)">2</button>
-      <button class="btn flex" value="3" onclick="buttonClick(this)">3</button>
-      <button class="btn flex secondary" value="add" onclick="buttonClick(this)"><i class="fas fa-plus"></i></button>
-    </div>
-    <div class="myRow">
-      <button class="btn btn0 flex" value="0" onclick="buttonClick(this)">0</button>
-      <!-- <button class="btn" >0</button> -->
-      <button class="btn btn1 flex" value="period" onclick="buttonClick(this)">.</button>
-      <button class="btn btn1 flex secondary" value="equals" onclick="buttonClick(this)"><i class="fas fa-equals"></i></button>
-    </div>
-
-
-  </main>
-
+    <script src="script.js"></script>
 </body>
-
 </html>
